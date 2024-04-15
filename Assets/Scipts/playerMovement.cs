@@ -45,14 +45,14 @@ public class PlayerMovement : MonoBehaviour
             gameObject.GetComponent<SpriteRenderer>().flipX = false;
         }
 
-        //if (movimentoHorizontal != 0)
-        //{
-        //    animator.SetBool("Walking", true);
-        //}
-        //else
-        //{
-        //    animator.SetBool("Walking", false);
-        //}
+        if (movimentoHorizontal != 0)
+        {
+            animator.SetBool("Run", true);
+        }
+        else
+        {
+            animator.SetBool("Run", false);
+        }
     }
 
     void Jump()
@@ -68,6 +68,7 @@ public class PlayerMovement : MonoBehaviour
         if (other.gameObject.CompareTag("Ground"))
         {
             isJumping = true;
+            animator.SetBool("Jump", false);
         }
 
     }
@@ -77,6 +78,7 @@ public class PlayerMovement : MonoBehaviour
         if (other.gameObject.CompareTag("Ground"))
         {
             isJumping = false;
+            animator.SetBool("Jump", true);
         }
 
     }
