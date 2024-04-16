@@ -46,7 +46,7 @@ public class CopController : MonoBehaviour
 
     void ContinueMoving()
     {
-        speed = 0f;
+        speed = 5f;
         animator.SetBool("Shooting", false);
         if (transform.position.x <= maxX && right)
         {
