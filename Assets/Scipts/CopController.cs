@@ -12,7 +12,6 @@ public class CopController : MonoBehaviour
     [SerializeField] private Transform gunPoint;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Animator animator; 
-    [SerializeField] private string shootingAnimationName;
     private Vector3 lastKnownPlayerPosition; 
     bool right = true;
     bool left = false;
