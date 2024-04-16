@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -18,10 +19,13 @@ public class PlayerMovement : MonoBehaviour
 
     public bool isAlive = true;
     public GameObject bullet;
+
+    public TMP_Text gearsCountText;
+    private int gears = 0;
     
     private void Awake()
     {
-        //audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     void Start()
@@ -32,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        gearsCountText.text = $"{gears}";
         if (isAlive)
         {
             Movement();
@@ -127,6 +132,16 @@ public class PlayerMovement : MonoBehaviour
         {
             isJumping = false;
             animator.SetBool("Jump", true);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Gear"))
+        {
+            audioManager.PlaySFX(audioManager.gear);
+            Destroy(other.gameObject);
+            gears += 1;
         }
     }
 
