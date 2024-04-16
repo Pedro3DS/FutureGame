@@ -6,14 +6,18 @@ public class Turret : MonoBehaviour
     public Transform player;
     public GameObject enemyShoot;
     public float shootInterval = 2f;
+    public int life = 3;
+    public GameObject explosion;
+
+
     private float timeSinceLastShot = 0f;
     private Vector3 lastKnownPlayerPosition;
     private bool isFacingRight = true;
-    PlayerMovement playerMovement; // Referência ao script do jogador
+    PlayerMovement playerMovement;
 
     void Start()
     {
-        playerMovement = player.GetComponent<PlayerMovement>(); // Obtém o script do jogador
+        playerMovement = player.GetComponent<PlayerMovement>();
     }
 
     void Update()
@@ -61,4 +65,20 @@ public class Turret : MonoBehaviour
         theScale.x *= -1;
         transform.localScale = theScale;
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+
+        if (other.gameObject.CompareTag("BulletPlayer"))
+        {
+            Destroy(other.gameObject);
+            life--;
+            if (life <= 0)
+            {
+                Instantiate(explosion, gameObject.transform.position, Quaternion.identity);
+                Destroy(gameObject);
+            }
+        }
+    }
+
 }

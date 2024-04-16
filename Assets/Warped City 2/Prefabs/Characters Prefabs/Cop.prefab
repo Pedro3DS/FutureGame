@@ -101,13 +101,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4d91aefc4e3e3a408214986239c5b91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxX: 31
-  minX: 17
+  maxX: -24
+  minX: -27
   detectionRange: 10
   player: {fileID: 0}
   gunPoint: {fileID: 3172774459655760573}
   bulletPrefab: {fileID: 2596542138769671106, guid: 1d4038a6399a9474186021bc95141960, type: 3}
   animator: {fileID: 9167123269755269357}
+  life: 3
+  explosion: {fileID: 2216006317822990508, guid: cdfce3eecb337324790fba15c0453b4a, type: 3}
 --- !u!95 &9167123269755269357
 Animator:
   serializedVersion: 4
