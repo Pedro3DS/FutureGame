@@ -9,11 +9,7 @@ TagManager:
   - Head
   - Enemy
   - Audio
-<<<<<<< HEAD
   - BulletPlayer
-=======
-  - Gear
->>>>>>> 779ff7c43a05ecb38679547313fc4b1e4442b0ae
   layers:
   - Default
   - TransparentFX
