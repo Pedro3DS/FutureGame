@@ -4,23 +4,28 @@ using UnityEngine;
 
 public class CopController : MonoBehaviour
 {
-
     [SerializeField] private float maxX;
     [SerializeField] private float minX;
     [SerializeField] private float detectionRange;
     [SerializeField] private GameObject player;
     [SerializeField] private Transform gunPoint;
     [SerializeField] private GameObject bulletPrefab;
-    [SerializeField] private Animator animator; 
-    private Vector3 lastKnownPlayerPosition; 
+    [SerializeField] private Animator animator;
+    private Vector3 lastKnownPlayerPosition;
     bool right = true;
     bool left = false;
-    float speed = 5f;
+    float speed = 0f;
     bool isShooting = false;
+    PlayerMovement playerMovement; // Referência ao script do jogador
+
+    void Start()
+    {
+        playerMovement = player.GetComponent<PlayerMovement>(); // Obtém o script do jogador
+    }
 
     void Update()
     {
-        if (Vector3.Distance(transform.position, player.transform.position) <= detectionRange)
+        if (playerMovement.isAlive && Vector3.Distance(transform.position, player.transform.position) <= detectionRange)
         {
             StopMoving();
             Shoot();
@@ -29,19 +34,19 @@ public class CopController : MonoBehaviour
         {
             ContinueMoving();
         }
-         lastKnownPlayerPosition = player.transform.position;
+        lastKnownPlayerPosition = player.transform.position;
     }
 
     void StopMoving()
     {
         speed = 0f;
         animator.SetBool("Shooting", true);
-        
+
     }
 
     void ContinueMoving()
     {
-        speed = 5f;
+        speed = 0f;
         animator.SetBool("Shooting", false);
         if (transform.position.x <= maxX && right)
         {

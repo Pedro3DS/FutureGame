@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - Bullet
+  - Head
+  - Enemy
   layers:
   - Default
   - TransparentFX

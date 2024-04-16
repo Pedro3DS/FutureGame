@@ -7,16 +7,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float jumpForce;
 
-
-    //public Transform checkGround;
-    //public LayerMask layerGround;
-
     private Rigidbody2D rb2d;
     private Animator animator;
 
     private bool isJumping;
-    //private bool isAttacking = false;
-
+    public bool isAlive = true;
+    public EnemyBullet enemyBulletScript;
 
     void Start()
     {
@@ -24,11 +20,13 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-
     void Update()
     {
-        Movement();
-        Jump();
+        if (isAlive) // Verifica se o jogador está vivo antes de permitir a movimentação e o pulo
+        {
+            Movement();
+            Jump();
+        }
     }
 
     void Movement()
@@ -45,7 +43,6 @@ public class PlayerMovement : MonoBehaviour
         {
             gameObject.GetComponent<SpriteRenderer>().flipX = false;
         }
-
 
         if (movimentoHorizontal != 0)
         {
@@ -72,9 +69,19 @@ public class PlayerMovement : MonoBehaviour
             isJumping = true;
             animator.SetBool("Jump", false);
         }
-
+        else if (other.gameObject.CompareTag("Bullet"))
+        {
+            Destroy(other.gameObject);
+            Die();
+        }
+        if(other.gameObject.CompareTag("Enemy")){
+            Die();
+        }
+        if (other.gameObject.CompareTag("Head"))
+        {
+            Destroy(other.gameObject.transform.parent.gameObject);
+        }
     }
-
     private void OnCollisionExit2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Ground"))
@@ -84,6 +91,17 @@ public class PlayerMovement : MonoBehaviour
         }
 
     }
-
-
+    void Die()
+    {
+        isAlive = false;
+        animator.SetBool("Hurt", true);
+        animator.SetBool("Run", false);
+        animator.SetBool("Jump", false);
+        rb2d.velocity = Vector2.zero;
+        enabled = false;
+    }
+    void Hurt()
+    {
+        animator.SetBool("Duck", true);
+    }
 }
