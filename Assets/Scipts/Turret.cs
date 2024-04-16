@@ -5,30 +5,40 @@ public class Turret : MonoBehaviour
     public float distanceToShoot = 10f;
     public Transform player;
     public GameObject enemyShoot;
-    public float shootInterval = 2f; 
-    private float timeSinceLastShot = 0f; 
-    private Vector3 lastKnownPlayerPosition; 
-    private bool isFacingRight = true; 
+    public float shootInterval = 2f;
+    private float timeSinceLastShot = 0f;
+    private Vector3 lastKnownPlayerPosition;
+    private bool isFacingRight = true;
+    PlayerMovement playerMovement; // Referência ao script do jogador
+
+    void Start()
+    {
+        playerMovement = player.GetComponent<PlayerMovement>(); // Obtém o script do jogador
+    }
 
     void Update()
     {
-        timeSinceLastShot += Time.deltaTime;
+        if (playerMovement.isAlive)
+        {
+            timeSinceLastShot += Time.deltaTime;
 
-        if (player.position.x < transform.position.x && isFacingRight)
-        {
-            Flip();
+            if (player.position.x < transform.position.x && isFacingRight)
+            {
+                Flip();
+            }
+            else if (player.position.x > transform.position.x && !isFacingRight)
+            {
+                Flip();
+            }
+
+            lastKnownPlayerPosition = player.position;
+
+            Shooting();
         }
-        else if (player.position.x > transform.position.x && !isFacingRight)
-        {
-            Flip();
-        }
-        
-        lastKnownPlayerPosition = player.position;
-        
-        Shooting();
     }
 
-    void Shooting(){
+    void Shooting()
+    {
         float distance = Vector2.Distance(transform.position, player.position);
         if (distance <= distanceToShoot && timeSinceLastShot >= shootInterval)
         {
