@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float speed;
@@ -16,12 +16,21 @@ public class PlayerMovement : MonoBehaviour
 
     private bool isJumping;
 
+<<<<<<< HEAD
     public bool isAlive = true;
     public GameObject bullet;
     
     private void Awake()
     {
         //audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+=======
+    private int gears = 0;
+    [SerializeField] private TMP_Text gearsText;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>(); 
+>>>>>>> 779ff7c43a05ecb38679547313fc4b1e4442b0ae
     }
 
     void Start()
@@ -32,7 +41,12 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+<<<<<<< HEAD
         if (isAlive)
+=======
+        gearsText.text = $"{gears}";
+        if (isAlive) // Verifica se o jogador está vivo antes de permitir a movimentação e o pulo
+>>>>>>> 779ff7c43a05ecb38679547313fc4b1e4442b0ae
         {
             Movement();
             Jump();
@@ -117,8 +131,12 @@ public class PlayerMovement : MonoBehaviour
         {
             Destroy(other.gameObject.transform.parent.gameObject);
         }
+<<<<<<< HEAD
 
       
+=======
+        
+>>>>>>> 779ff7c43a05ecb38679547313fc4b1e4442b0ae
     }
 
     private void OnCollisionExit2D(Collision2D other)
@@ -130,6 +148,18 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+<<<<<<< HEAD
+=======
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Gear"))
+        {
+            audioManager.PlaySfx(audioManager.getGearSound);
+            Destroy(other.gameObject);
+            gears += 1;
+        }
+    }
+>>>>>>> 779ff7c43a05ecb38679547313fc4b1e4442b0ae
     void Die()
     {
         isAlive = false;
