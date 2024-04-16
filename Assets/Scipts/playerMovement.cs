@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb2d;
     private Animator animator;
 
-    public bool isJumping;
+    private bool isJumping;
     //private bool isAttacking = false;
 
 
@@ -34,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
     void Movement()
     {
         float movimentoHorizontal = Input.GetAxis("Horizontal");
+
         rb2d.velocity = new Vector2(movimentoHorizontal * speed, rb2d.velocity.y);
 
         if (movimentoHorizontal < 0)
@@ -44,6 +45,7 @@ public class PlayerMovement : MonoBehaviour
         {
             gameObject.GetComponent<SpriteRenderer>().flipX = false;
         }
+
 
         if (movimentoHorizontal != 0)
         {
