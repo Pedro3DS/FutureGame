@@ -2,9 +2,8 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
-    public float distanceToShoot = 5f;
+    public float distanceToShoot = 10f;
     public Transform player;
-    public Animator animator;
     public GameObject enemyShoot;
     public float shootInterval = 2f; 
     private float timeSinceLastShot = 0f; 
