@@ -16,7 +16,11 @@ public class CopController : MonoBehaviour
     bool left = false;
     float speed = 0f;
     bool isShooting = false;
-    PlayerMovement playerMovement; // Referência ao script do jogador
+    PlayerMovement playerMovement;
+
+
+    public int life = 3;
+    public GameObject explosion;
 
     void Start()
     {
@@ -91,10 +95,23 @@ public class CopController : MonoBehaviour
             StartCoroutine(ResetShoot());
         }
     }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
 
+        if (other.gameObject.CompareTag("BulletPlayer"))
+        {
+            Destroy(other.gameObject);
+            life--;
+            if (life <= 0)
+            {
+                Instantiate(explosion, gameObject.transform.position, Quaternion.identity);
+                Destroy(gameObject);
+            }
+        }
+    }
     IEnumerator ResetShoot()
     {
-        yield return new WaitForSeconds(1.5f); // Aguarda 1.5 segundos antes de permitir outro tiro
+        yield return new WaitForSeconds(1.5f);
         isShooting = false;
     }
 }

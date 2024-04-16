@@ -6,8 +6,8 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] private float jumpForce;
-
-    [SerializeField] private EnemyBullet enemyBulletScript;
+    [SerializeField] private float cadenciaTiro = 0.5f;
+    private float proximoTiro = 0f;
 
     AudioManager audioManager;
 
@@ -15,54 +15,55 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator;
 
     private bool isJumping;
-    public bool isAlive = true;
 
+    public bool isAlive = true;
+    public int bulletDamage = 10; // Dano causado pela bala do jogador
+    public GameObject bullet;
+    
     private void Awake()
     {
-        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        //audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-
     }
 
     void Update()
     {
-        if (isAlive) // Verifica se o jogador está vivo antes de permitir a movimentação e o pulo
+        if (isAlive)
         {
             Movement();
             Jump();
+            Shooting();
         }
     }
 
     void Movement()
     {
         float movimentoHorizontal = Input.GetAxis("Horizontal");
-
         rb2d.velocity = new Vector2(movimentoHorizontal * speed, rb2d.velocity.y);
-        
         if (movimentoHorizontal < 0)
         {
             gameObject.GetComponent<SpriteRenderer>().flipX = true;
         }
         else if (movimentoHorizontal > 0)
-        { 
+        {
             gameObject.GetComponent<SpriteRenderer>().flipX = false;
         }
 
         if (movimentoHorizontal != 0)
         {
             animator.SetBool("Run", true);
-
         }
         else
         {
             animator.SetBool("Run", false);
         }
     }
+
 
     void Jump()
     {
@@ -71,6 +72,35 @@ public class PlayerMovement : MonoBehaviour
             rb2d.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
         }
     }
+
+    void Shooting()
+    {
+        if (Input.GetMouseButtonDown(0) && Time.time >= proximoTiro)
+        {
+            animator.SetBool("Shoot", true);
+
+            proximoTiro = Time.time + cadenciaTiro;
+
+            Vector2 direction = Vector2.right;
+            if (gameObject.GetComponent<SpriteRenderer>().flipX)
+            {
+                direction = Vector2.left;
+            }
+
+            Vector3 spawnPosition = transform.position + new Vector3(direction.x, direction.y, 0f);
+
+
+            GameObject newBullet = Instantiate(bullet, spawnPosition, Quaternion.identity);
+
+
+            Rigidbody2D bulletRB = newBullet.GetComponent<Rigidbody2D>();
+            bulletRB.velocity = direction * 10;
+
+            Destroy(bulletRB,3);
+        }
+    }
+
+    
 
     private void OnCollisionEnter2D(Collision2D other)
     {
@@ -84,14 +114,14 @@ public class PlayerMovement : MonoBehaviour
             Destroy(other.gameObject);
             Die();
         }
-        if(other.gameObject.CompareTag("Enemy")){
-            Die();
-        }
         if (other.gameObject.CompareTag("Head"))
         {
             Destroy(other.gameObject.transform.parent.gameObject);
         }
+
+      
     }
+
     private void OnCollisionExit2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Ground"))
@@ -99,8 +129,8 @@ public class PlayerMovement : MonoBehaviour
             isJumping = false;
             animator.SetBool("Jump", true);
         }
-
     }
+
     void Die()
     {
         isAlive = false;
@@ -111,8 +141,13 @@ public class PlayerMovement : MonoBehaviour
         enabled = false;
         audioManager.musicSource.Stop();
     }
+
     void Hurt()
     {
         animator.SetBool("Duck", true);
+    }
+    void EndShooting()
+    {
+        animator.SetBool("Shoot", false);
     }
 }

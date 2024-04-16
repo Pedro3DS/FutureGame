@@ -9,6 +9,7 @@ TagManager:
   - Head
   - Enemy
   - Audio
+  - BulletPlayer
   layers:
   - Default
   - TransparentFX

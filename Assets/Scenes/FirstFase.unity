@@ -4507,10 +4507,6 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 2028328389}
-    - target: {fileID: 1889293507631748105, guid: 511cd3514a9024c9ca822be22c9a0e96, type: 3}
-      propertyPath: shootInterval
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 3809959971946328322, guid: 511cd3514a9024c9ca822be22c9a0e96, type: 3}
       propertyPath: m_Name
       value: Turret Idle
@@ -4776,6 +4772,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 2028328387}
+    - target: {fileID: 4088295719117241851, guid: b4bce5b4dff684ae88017b2ce6cdea46, type: 3}
+      propertyPath: detectionRange
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4bce5b4dff684ae88017b2ce6cdea46, type: 3}
 --- !u!1 &1565215242 stripped
@@ -36451,10 +36451,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f34ddfbe85a718479f21b6aef170251, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
-  jumpForce: 6
-  enemyBulletScript: {fileID: 3309895444221105269, guid: 1d4038a6399a9474186021bc95141960, type: 3}
+  speed: 5
+  jumpForce: 10
+  cadenciaTiro: 0.5
   isAlive: 1
+  bulletDamage: 10
+  bullet: {fileID: 7259374370334305698, guid: 6874799162c5e43ad8b8d2f5d917f42f, type: 3}
 --- !u!70 &2028328395
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
