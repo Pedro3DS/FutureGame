@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2646631715068134736}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.1, y: 1, z: 0}
+  m_LocalPosition: {x: 0.1, y: 0.66, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15f8db90481c4314eaa9370e22a9af27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distanceToShoot: 0
+  distanceToShoot: 10
   player: {fileID: 0}
   enemyShoot: {fileID: 2596542138769671106, guid: 1d4038a6399a9474186021bc95141960, type: 3}
   shootInterval: 2
@@ -185,16 +185,16 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.063231945, y: -0.66011226}
+  m_Offset: {x: 0.03157425, y: -0.4174015}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.2, y: 3.1}
+    oldSize: {x: 1.4666667, y: 2.0666666}
     newSize: {x: 0.44, y: 0.62}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5360632, y: 1.7797754}
+  m_Size: {x: 1.0928526, y: 1.2943538}
   m_EdgeRadius: 0
