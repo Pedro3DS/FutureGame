@@ -4636,10 +4636,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1351995008016450861, guid: 511cd3514a9024c9ca822be22c9a0e96, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.66
-      objectReference: {fileID: 0}
     - target: {fileID: 1889293507631748105, guid: 511cd3514a9024c9ca822be22c9a0e96, type: 3}
       propertyPath: player
       value: 
@@ -4691,22 +4687,6 @@ PrefabInstance:
     - target: {fileID: 4765612244253447280, guid: 511cd3514a9024c9ca822be22c9a0e96, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5930335974560891969, guid: 511cd3514a9024c9ca822be22c9a0e96, type: 3}
-      propertyPath: m_Size.x
-      value: 1.0928526
-      objectReference: {fileID: 0}
-    - target: {fileID: 5930335974560891969, guid: 511cd3514a9024c9ca822be22c9a0e96, type: 3}
-      propertyPath: m_Size.y
-      value: 1.2943538
-      objectReference: {fileID: 0}
-    - target: {fileID: 5930335974560891969, guid: 511cd3514a9024c9ca822be22c9a0e96, type: 3}
-      propertyPath: m_Offset.x
-      value: 0.03157425
-      objectReference: {fileID: 0}
-    - target: {fileID: 5930335974560891969, guid: 511cd3514a9024c9ca822be22c9a0e96, type: 3}
-      propertyPath: m_Offset.y
-      value: -0.4174015
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 511cd3514a9024c9ca822be22c9a0e96, type: 3}
@@ -24231,8 +24211,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.020000003, y: -0.04978858}
-  m_Size: {x: 0.3, y: 0.6395772}
+  m_Offset: {x: -0.020000003, y: -0.0949686}
+  m_Size: {x: 0.3, y: 0.54921746}
   m_Direction: 0
 --- !u!1001 &3753423544290929455
 PrefabInstance:
