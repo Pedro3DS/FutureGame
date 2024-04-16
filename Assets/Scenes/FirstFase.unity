@@ -23578,7 +23578,6 @@ GameObject:
   - component: {fileID: 2028328388}
   - component: {fileID: 2028328390}
   - component: {fileID: 2028328393}
-  - component: {fileID: 2028328392}
   - component: {fileID: 2028328394}
   - component: {fileID: 2028328395}
   m_Layer: 0
@@ -23675,32 +23674,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!61 &2028328392
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2028328387}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: 035a334ce79a5e14295007ddf6e2ae21, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.022907376, y: -0.1396468}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.8, y: 0.8}
-    newSize: {x: 0.8, y: 0.8}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.23349676, y: 0.52070636}
-  m_EdgeRadius: 0
 --- !u!50 &2028328393
 Rigidbody2D:
   serializedVersion: 4
@@ -23736,7 +23709,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   jumpForce: 5
-  isJumping: 0
 --- !u!70 &2028328395
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
