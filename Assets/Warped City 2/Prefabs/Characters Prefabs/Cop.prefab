@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 9167123269755269356}
   - component: {fileID: 4088295719117241851}
   - component: {fileID: 9167123269755269357}
+  - component: {fileID: 1876241752489903305}
+  - component: {fileID: 6527729490707141762}
   m_Layer: 0
   m_Name: Cop
   m_TagString: Untagged
@@ -99,9 +101,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4d91aefc4e3e3a408214986239c5b91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxX: 29
-  minX: 13
-  detectionRange: 10
+  maxX: 31
+  minX: 17
+  detectionRange: 8
   player: {fileID: 0}
   gunPoint: {fileID: 3172774459655760573}
   bulletPrefab: {fileID: 2596542138769671106, guid: 1d4038a6399a9474186021bc95141960, type: 3}
@@ -126,6 +128,43 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!70 &1876241752489903305
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1735341820128141624}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.21429825, y: -0.21429992}
+  m_Size: {x: 1.4784622, y: 2.7714}
+  m_Direction: 0
+--- !u!50 &6527729490707141762
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1735341820128141624}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &6446628611945966585
 GameObject:
   m_ObjectHideFlags: 0
