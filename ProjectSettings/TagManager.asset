@@ -10,6 +10,7 @@ TagManager:
   - Enemy
   - Audio
   - BulletPlayer
+  - Gear
   layers:
   - Default
   - TransparentFX
