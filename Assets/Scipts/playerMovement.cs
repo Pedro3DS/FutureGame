@@ -7,17 +7,26 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float jumpForce;
 
+    [SerializeField] private EnemyBullet enemyBulletScript;
+
+    AudioManager audioManager;
+
     private Rigidbody2D rb2d;
     private Animator animator;
 
     private bool isJumping;
     public bool isAlive = true;
-    public EnemyBullet enemyBulletScript;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
 
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+
     }
 
     void Update()
@@ -34,19 +43,20 @@ public class PlayerMovement : MonoBehaviour
         float movimentoHorizontal = Input.GetAxis("Horizontal");
 
         rb2d.velocity = new Vector2(movimentoHorizontal * speed, rb2d.velocity.y);
-
+        
         if (movimentoHorizontal < 0)
         {
             gameObject.GetComponent<SpriteRenderer>().flipX = true;
         }
         else if (movimentoHorizontal > 0)
-        {
+        { 
             gameObject.GetComponent<SpriteRenderer>().flipX = false;
         }
 
         if (movimentoHorizontal != 0)
         {
             animator.SetBool("Run", true);
+
         }
         else
         {
@@ -99,6 +109,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("Jump", false);
         rb2d.velocity = Vector2.zero;
         enabled = false;
+        audioManager.musicSource.Stop();
     }
     void Hurt()
     {
