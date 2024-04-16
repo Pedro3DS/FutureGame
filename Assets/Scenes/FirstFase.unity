@@ -291,6 +291,7 @@ MonoBehaviour:
   player: {fileID: 2028328389}
   animator: {fileID: 363165358}
   enemyShoot: {fileID: 2596542138769671106, guid: 1d4038a6399a9474186021bc95141960, type: 3}
+  shootInterval: 2
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -21257,10 +21258,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2028328389}
   - component: {fileID: 2028328388}
+  - component: {fileID: 2028328394}
   - component: {fileID: 2028328390}
   - component: {fileID: 2028328393}
   - component: {fileID: 2028328392}
-  - component: {fileID: 2028328394}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -21414,6 +21415,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f34ddfbe85a718479f21b6aef170251, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 5
+  jumpForce: 500
+  isJumping: 0
 --- !u!1001 &3753423544290929455
 PrefabInstance:
   m_ObjectHideFlags: 0
