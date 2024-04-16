@@ -17,7 +17,6 @@ public class PlayerMovement : MonoBehaviour
     private bool isJumping;
 
     public bool isAlive = true;
-    public int bulletDamage = 10; // Dano causado pela bala do jogador
     public GameObject bullet;
     
     private void Awake()
