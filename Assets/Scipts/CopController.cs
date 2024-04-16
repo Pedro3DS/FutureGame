@@ -90,7 +90,7 @@ public class CopController : MonoBehaviour
 
     IEnumerator ResetShoot()
     {
-        yield return new WaitForSeconds(1.5f); // Aguarda 1.5 segundos antes de permitir outro tiro
+        yield return new WaitForSeconds(1.5f); 
         isShooting = false;
     }
 }
