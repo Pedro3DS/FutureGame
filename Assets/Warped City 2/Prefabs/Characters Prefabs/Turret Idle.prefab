@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4765612244253447280}
   - component: {fileID: 8733110903249590277}
+  - component: {fileID: 1889293507631748105}
   - component: {fileID: 8733110903249590274}
   m_Layer: 0
   m_Name: Turret Idle
@@ -28,6 +29,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -75,7 +77,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 2603f22ed196248409a65a2cf5d4c9f5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.44, y: 0.62}
@@ -84,9 +86,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1889293507631748105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3809959971946328322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15f8db90481c4314eaa9370e22a9af27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distanceToShoot: 5
+  player: {fileID: 0}
+  enemyShoot: {fileID: 2596542138769671106, guid: 1d4038a6399a9474186021bc95141960, type: 3}
+  shootInterval: 2
 --- !u!95 &8733110903249590274
 Animator:
-  serializedVersion: 3
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -99,6 +117,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
