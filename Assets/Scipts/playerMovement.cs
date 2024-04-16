@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float speed;
@@ -17,9 +17,12 @@ public class PlayerMovement : MonoBehaviour
     private bool isJumping;
     public bool isAlive = true;
 
+    private int gears = 0;
+    [SerializeField] private TMP_Text gearsText;
+
     private void Awake()
     {
-        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>(); 
     }
 
     void Start()
@@ -31,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        gearsText.text = $"{gears}";
         if (isAlive) // Verifica se o jogador está vivo antes de permitir a movimentação e o pulo
         {
             Movement();
@@ -91,6 +95,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Destroy(other.gameObject.transform.parent.gameObject);
         }
+        
     }
     private void OnCollisionExit2D(Collision2D other)
     {
@@ -100,6 +105,16 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("Jump", true);
         }
 
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Gear"))
+        {
+            audioManager.PlaySfx(audioManager.getGearSound);
+            Destroy(other.gameObject);
+            gears += 1;
+        }
     }
     void Die()
     {
