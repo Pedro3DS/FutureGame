@@ -24,4 +24,9 @@ public class SceneManager : MonoBehaviour
     {  
         UnityEngine.SceneManagement.SceneManager.LoadScene("FirstFase");
     }
+
+    public void Menu()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Menu");
+    }
 }
