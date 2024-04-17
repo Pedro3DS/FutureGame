@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject bullet;
 
     public TMP_Text gearsCountText;
-    private int gears = 0;
+    public int gears = 0;
 
     public Canvas gameOverCanvas;
 
@@ -59,6 +59,7 @@ public class PlayerMovement : MonoBehaviour
         {
             gameObject.GetComponent<SpriteRenderer>().flipX = false;
         }
+
 
         if (movimentoHorizontal != 0)
         {
@@ -124,13 +125,17 @@ public class PlayerMovement : MonoBehaviour
         {
             Destroy(other.gameObject.transform.parent.gameObject);
         }
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            Die();
+        }
 
-      
+
     }
 
     private void OnCollisionExit2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Ground"))
+        if (other.gameObject.CompareTag("Ground") && isJumping)
         {
             isJumping = false;
             animator.SetBool("Jump", true);
