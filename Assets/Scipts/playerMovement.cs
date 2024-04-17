@@ -21,8 +21,10 @@ public class PlayerMovement : MonoBehaviour
     public GameObject bullet;
 
     public TMP_Text gearsCountText;
-    private int gears = 0;
-    
+    public int gears = 0;
+
+    public Canvas gameOverCanvas;
+
     private void Awake()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
@@ -57,6 +59,7 @@ public class PlayerMovement : MonoBehaviour
         {
             gameObject.GetComponent<SpriteRenderer>().flipX = false;
         }
+
 
         if (movimentoHorizontal != 0)
         {
@@ -122,13 +125,17 @@ public class PlayerMovement : MonoBehaviour
         {
             Destroy(other.gameObject.transform.parent.gameObject);
         }
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            Die();
+        }
 
-      
+
     }
 
     private void OnCollisionExit2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Ground"))
+        if (other.gameObject.CompareTag("Ground") && isJumping)
         {
             isJumping = false;
             animator.SetBool("Jump", true);
@@ -143,6 +150,11 @@ public class PlayerMovement : MonoBehaviour
             Destroy(other.gameObject);
             gears += 1;
         }
+        if (other.gameObject.CompareTag("FallLimit"))
+        {
+            Die();
+            rb2d.bodyType = RigidbodyType2D.Static;
+        }
     }
 
     void Die()
@@ -154,6 +166,7 @@ public class PlayerMovement : MonoBehaviour
         rb2d.velocity = Vector2.zero;
         enabled = false;
         audioManager.musicSource.Stop();
+        gameOverCanvas.gameObject.SetActive(true);
     }
 
     void Hurt()
