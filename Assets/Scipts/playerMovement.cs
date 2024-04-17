@@ -107,8 +107,8 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    
 
+    public GameObject explosion;
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Ground"))
@@ -124,6 +124,8 @@ public class PlayerMovement : MonoBehaviour
         if (other.gameObject.CompareTag("Head"))
         {
             Destroy(other.gameObject.transform.parent.gameObject);
+            Instantiate(explosion,other.gameObject.transform.position, Quaternion.identity);
+
         }
         if (other.gameObject.CompareTag("Enemy"))
         {
@@ -166,12 +168,13 @@ public class PlayerMovement : MonoBehaviour
         rb2d.velocity = Vector2.zero;
         enabled = false;
         audioManager.musicSource.Stop();
-        gameOverCanvas.gameObject.SetActive(true);
+       
     }
 
     void Hurt()
     {
         animator.SetBool("Duck", true);
+        gameOverCanvas.gameObject.SetActive(true);
     }
     void EndShooting()
     {
