@@ -22,7 +22,9 @@ public class PlayerMovement : MonoBehaviour
 
     public TMP_Text gearsCountText;
     private int gears = 0;
-    
+
+    public Canvas gameOverCanvas;
+
     private void Awake()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
@@ -143,6 +145,11 @@ public class PlayerMovement : MonoBehaviour
             Destroy(other.gameObject);
             gears += 1;
         }
+        if (other.gameObject.CompareTag("FallLimit"))
+        {
+            Die();
+            rb2d.bodyType = RigidbodyType2D.Static;
+        }
     }
 
     void Die()
@@ -154,6 +161,7 @@ public class PlayerMovement : MonoBehaviour
         rb2d.velocity = Vector2.zero;
         enabled = false;
         audioManager.musicSource.Stop();
+        gameOverCanvas.gameObject.SetActive(true);
     }
 
     void Hurt()

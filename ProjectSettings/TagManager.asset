@@ -11,6 +11,9 @@ TagManager:
   - Audio
   - BulletPlayer
   - Gear
+  - GameOver
+  - Score
+  - FallLimit
   layers:
   - Default
   - TransparentFX
