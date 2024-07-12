@@ -45,6 +45,10 @@ public class Player : MonoBehaviour
             Jump();
             Shooting();
         }
+
+
+
+
     }
 
     void Movement()
@@ -82,7 +86,7 @@ public class Player : MonoBehaviour
 
     void Shooting()
     {
-        if (Input.GetMouseButtonDown(0) && Time.time >= proximoTiro)
+        if (Input.GetButton("Fire1") && Time.time >= proximoTiro)
         {
             animator.SetBool("Shoot", true);
 

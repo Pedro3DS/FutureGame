@@ -15,4 +15,10 @@ public class SceneManager : MonoBehaviour
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(scena);
     }
+
+    void Update(){
+        if(Input.GetButton("Start")){
+            RestartFase();
+        }
+    }
 }
