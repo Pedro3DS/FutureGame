@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
@@ -42,8 +43,6 @@ public class Player : MonoBehaviour
         if (isAlive)
         {
             Movement();
-            Jump();
-            Shooting();
         }
 
 
@@ -76,17 +75,17 @@ public class Player : MonoBehaviour
     }
 
 
-    void Jump()
+    public void Jump(InputAction.CallbackContext inputValue)
     {
-        if (Input.GetButtonDown("Jump") && isJumping)
+        if (inputValue.phase == InputActionPhase.Started && isJumping)
         {
             rb2d.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
         }
     }
 
-    void Shooting()
+    public void Shooting(InputAction.CallbackContext inputValue)
     {
-        if (Input.GetButton("Fire1") && Time.time >= proximoTiro)
+        if (Time.time >= proximoTiro && inputValue.phase == InputActionPhase.Started)
         {
             animator.SetBool("Shoot", true);
 
