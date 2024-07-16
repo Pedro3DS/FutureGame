@@ -49,6 +49,17 @@
                 },
                 {
                     "name": "",
+                    "id": "5b449486-d8ba-4f27-ab02-56146b7f2753",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "4fce5149-51d0-4c31-8262-1c706ae8b5f9",
                     "path": "<HID::ZhiXu Tech. GamePad>/trigger",
                     "interactions": "",
@@ -62,6 +73,17 @@
                     "name": "",
                     "id": "9ecaa25b-7ce2-4738-9b81-dd2c627f3547",
                     "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5b671e68-f65b-4aa1-bea3-f0546c3297e8",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -108,8 +130,30 @@
                 },
                 {
                     "name": "",
+                    "id": "d7c00fb7-c0ca-4a3c-b967-c22dff916019",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Start",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "c8b70ca4-8761-48bc-88e5-821b0bfc818e",
                     "path": "<HID::ZhiXu Tech. GamePad>/button11",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Exit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "579d8fa6-1317-4117-9497-738378850255",
+                    "path": "<Gamepad>/select",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
